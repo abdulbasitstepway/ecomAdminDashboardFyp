@@ -1,0 +1,61 @@
+<div class="flex flex-row">
+  <app-sidebar></app-sidebar>
+  <div class="body-position">
+      <div class="body-holder">
+          <!-- <app-dashboard-head></app-dashboard-head> -->
+
+          <div class="main">
+              
+              <div class="body-card">
+                  <div class="card">
+                      <h1 class="mb-4 h-color ml-4 mt-4">Add Category</h1>
+
+                      <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+                          <div class="grid">
+                              <div class="col-6 md:col-12 lg:col-12">
+                                  <div class="flex flex-column ml-4 mr-4">
+                                      <label For="name"> Name</label>
+                                      <input [(ngModel)]="name"  pInputText id="name" formControlName="name"
+                                       placeholder="name" />
+                                      <div
+                                          *ngIf="myForm.get('name')?.invalid && (myForm.get('name')?.dirty || myForm.get('name')?.touched)">
+                                          Please provide a category name.
+                                      </div>
+                                  </div>
+                              </div>
+                              <!-- <div class="col-6 md:col-12 lg:col-12">
+                                  <div class="flex flex-column ml-4 mr-4">
+                                      <label For="date">Date</label>
+                                      <input pInputText id="price" formControlName="price" placeholder="Price" /> -->
+                                      <!-- <p-calendar [showButtonBar]="true" id="date" formControlName="date"></p-calendar>
+                                      <div
+                                          *ngIf="myForm.get('date')?.invalid && (myForm.get('date')?.dirty || myForm.get('date')?.touched)">
+                                          Please provide a date.
+                                      </div>
+                                  </div>
+                              </div> --> 
+                              
+                          </div>
+                              <div class="col-12 lg:col-12 md:col-12">
+                              <div class="flex align-items-center justify-content-center mt-4 mb-4">
+                                  <p-button label="Cancel" class="bg-o-color mr" routerLink="/"
+                                      styleClass="p-button-outlined">
+                                  </p-button>
+                                  <p-button 
+                                  class="bg-b-color" 
+                                  styleClass="p-button"
+                                  type="submit" 
+                                  
+                                  [disabled]="myForm.invalid"> 
+                                  {{buttonName}}
+                                  </p-button>
+                              </div>
+                          </div>
+                      </form>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

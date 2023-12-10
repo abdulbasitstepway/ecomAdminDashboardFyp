@@ -1,0 +1,165 @@
+<!-- <app-sidebar></app-sidebar> -->
+
+
+<div class="flex flex-row">
+    <app-sidebar></app-sidebar>
+    <div class="body-position">
+        <div class="body-holder">
+            <!-- <app-dashboard-head></app-dashboard-head> -->
+
+            <div class="main">
+                <!-- <div class="card flex justify-content-center"> -->
+
+                <!-- //here we show bread crump -->
+                <!-- <p-breadcrumb class="max-w-full"></p-breadcrumb>
+          </div> -->
+                <div class="body-card">
+                    <div class="card">
+                        <h1 class="mb-4 h-color ml-4 mt-4">Add Product</h1>
+
+                        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                            
+
+                            <div class="grid">
+    
+                                <div class="col-6 md:col-12 lg:col-12">
+                                    <div class="flex flex-column ml-4 mr-4">
+                                        <label htmlFor="productName">Product Name</label>
+                                        <input pInputText id="productName" formControlName="productName"
+                                            placeholder="Product name" />
+                                        <div
+                                            *ngIf="myForm.get('productName')?.invalid && (myForm.get('productName')?.dirty || myForm.get('productName')?.touched)">
+                                            Please provide a product name.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 md:col-12 lg:col-12">
+                                    <div class="flex flex-column mr-4">
+                                        <label htmlFor="price">Price</label>
+                                        <!-- <input pInputText id="price" formControlName="price" placeholder="Price" /> -->
+                                        <p-inputNumber pInput id="price" formControlName="price"
+                                            placeholder="Price"></p-inputNumber>
+                                        <div
+                                            *ngIf="myForm.get('price')?.invalid && (myForm.get('price')?.dirty || myForm.get('price')?.touched)">
+                                            Please provide a price.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 md:col-12 lg:col-12">
+                                    <div class="flex flex-column ml-4 mr-4">
+                                        <label htmlFor="categoryId">Category</label>
+
+                                        <!-- <p-dropdown [options]="category"  optionLabel="name"></p-dropdown> -->
+                                        <p-dropdown formControlName="category" [options]="category" optionLabel="name" placeholder="Select a Category" ></p-dropdown>
+                                        <!-- <p-dropdown [options]="cities" [(ngModel)]="" optionLabel="name" placeholder="Select a City"></p-dropdown> -->
+                                        <!-- <input pInputText id="categoryId" formControlName="categoryId"
+                                            placeholder="category id" />-->
+                                        <div
+                                            *ngIf="myForm.get('category')?.invalid && (myForm.get('category')?.dirty || myForm.get('category')?.touched)">
+                                            Please select a category.
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div class="col-6 lg:col-12 md:col-12">
+                                    <div class="flex flex-column w-14rem">
+                                        <label for="upload">Upload</label>
+                                        <div class="card flex justify-content-center bg-dark text-white">
+                                            <input formControlName="file" type="file" #fileInput class="form-control-file mt-3 ml-2"
+                                                (change)="onFileSelected(fileInput)" />
+                                            <div class="flex justify-content-center ">
+                                                <button (click)="onUpload()" class="btn btn-light hover:btn btn-outline-dark w-40px mt-2 mb-2 ">
+                                                    Upload</button>
+                                            </div>
+                                            <div
+                                            *ngIf="myForm.get('file')?.invalid && (myForm.get('file')?.dirty || myForm.get('file')?.touched)">
+                                            Please select a category.
+                                        </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-12 lg:col-12 md:col-12">
+                                <div class="flex align-items-center justify-content-center mt-4 mb-4">
+                                    <p-button label="Cancel" class="bg-o-color mr" routerLink="/products"
+                                        styleClass="p-button-outlined">
+                                    </p-button>
+                                    <p-button label="Save" class="bg-b-color" styleClass="p-button" type="submit" 
+                                         [disabled]="myForm.invalid">
+                                        <!-- (click)="onSubmit()" routerLink="/products"-->
+                                    </p-button>
+                                </div>
+                            </div>
+                            <!-- <button type="submit" [disabled]="myForm.invalid">Send</button> -->
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Extra work not included in this page -->
+
+<!-- <app-sidebar></app-sidebar>
+<div class="body-position">
+    <app-dashboard-head></app-dashboard-head>
+
+    <div class="main-container">
+        <div>
+            <h4> Product</h4>
+        </div>
+
+        <div class="order-body py-2">
+          <form
+        class="was-validated"
+      >
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 my-3">
+                        <label class="add-order-label m-0">Name</label>
+                        <input type="text" class="order-search form-control order-form-input m-0"
+                             style="border:1px solid #ced4da;" placeholder="Enter Name" name="name" required>
+                    </div>
+                    <div class="col-6 my-3">
+                        <label class="add-order-label m-0">price</label>
+                        <input type="text" class="order-search form-control order-form-input m-0"
+                             style="border:1px solid #ced4da;" placeholder="Enter Business Name" name="Business name" required>
+                    </div>
+                    <div class="col-6 my-3">
+                        <label class="add-order-label m-0">Status</label><br>
+                        <label class="switch mt-2">
+                            <input type="checkbox" >
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-12 my-3 d-flex justify-content-center mx-0">
+                        <button type="submit" class="btn order-table-btn btn-search-panel w-25">
+                        </button>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
+ -->

@@ -1,0 +1,28 @@
+@import "primeicons/primeicons.css";
+
+.body-position {
+    width: 100%;
+}
+
+/* .bg-b-color{
+    width: 20px;
+
+} */
+.bg-b-color {
+    padding: 10px 30px 10px 30px !important;
+}
+
+.custom-padding {
+    padding: 90px !important; /* Adjust the padding value as needed */
+  }
+  /* .custom-file-input {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  } */
