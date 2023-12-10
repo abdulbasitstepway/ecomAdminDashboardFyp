@@ -18,8 +18,8 @@ export class ProductService {
   }
 
   postProduct(obj :any){
-    let url = `${this._url}/product/image`
-    return this.http.post(url,  obj)
+    let url = `${this._url}/product`
+    return this.http.post(url,obj)
   }
 
   deleteProducts(id:any){

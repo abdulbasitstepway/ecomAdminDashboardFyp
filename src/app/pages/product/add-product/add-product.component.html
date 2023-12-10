@@ -85,7 +85,7 @@
                                         styleClass="p-button-outlined">
                                     </p-button>
                                     <p-button label="Save" class="bg-b-color" styleClass="p-button" type="submit" 
-                                         [disabled]="myForm.invalid">
+                                         [disabled]="myForm.invalid" (click)="onSubmit()">
                                         <!-- (click)="onSubmit()" routerLink="/products"-->
                                     </p-button>
                                 </div>

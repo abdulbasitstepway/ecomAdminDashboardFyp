@@ -69,33 +69,44 @@ export class AddProductComponent implements OnInit {
       )
     
   }
+
   onSubmit(){
-   
+   debugger
     if(this.myForm.valid){
-      console.log(this.myForm.value);
-      console.log(this.myForm.value.productName +" ProductName");
-      console.log(this.myForm.value.price +" Price");
-      console.log(this.myForm.value.category.id +" Category");
-      console.log(this.imageURLs +" URl");
+      // console.log(this.myForm.value);
+      // console.log(this.myForm.value.productName +" ProductName");
+      // console.log(this.myForm.value.price +" Price");
+      // console.log(this.myForm.value.category.id +" Category");
+      // console.log(this.imageURLs +" URl");
       
-     const formData = new FormData();
-     formData.append('name', this.myForm.value.productName);
-     formData.append('price', this.myForm.value.price);
-     formData.append('category', this.myForm.value.category.id);
+    //  const formData = new FormData();
+     
+    //  formData.append('name', this.myForm.value.productName);
+    //  formData.append('price', this.myForm.value.price);
+    //  formData.append('category', this.myForm.value.category.id);
+    const obj = {
+      name : this.myForm.value.productName,
+      price : this.myForm.value.price,
+      category : this.myForm.value.category.id,
+      image : this.imageURLs
+    }
+    console.log("object",+ obj );
+    console.log(this.imageURLs);
+    
     //  formData.append('file',this.image );
       // console.log(this.myForm.value.image  + "Hello");
       
-     console.log(this.myForm + "      FormDATA");
+    //  console.log(this.myForm + "      FormDATA");
      
-    // this.productService.postProduct(formData).subscribe(
-    //   (respose)=> {
-    //     console.log('Product uploaded successfully!',respose);
-    //   }
-    // )
+    this.productService.postProduct(obj).subscribe(
+      (respose)=> {
+        console.log('Product uploaded successfully!',respose);
+      }
+    )
      }
     
     
-   }
+    }
 }
   
 
