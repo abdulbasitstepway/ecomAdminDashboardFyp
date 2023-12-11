@@ -35,7 +35,7 @@
                                     <div class="flex flex-column mr-4">
                                         <label htmlFor="price">Price</label>
                                         <!-- <input [(ngModel)]="price" pInputText id="price" formControlName="price"  />  -->
-                                        <p-inputNumber  pInputText pInput id="price" formControlName="price"
+                                        <p-inputNumber  pInputText pInput id="price" class="p-0 border-0" formControlName="price"
                                             placeholder="Price"></p-inputNumber>
                                         <div
                                             *ngIf="myForm.get('price')?.invalid && (myForm.get('price')?.dirty || myForm.get('price')?.touched)">
