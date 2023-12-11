@@ -17,27 +17,25 @@
                     <div class="card">
                         <h1 class="mb-4 h-color ml-4 mt-4">Add Product</h1>
 
-                        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-                            
-
+                        <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
                             <div class="grid">
-    
                                 <div class="col-6 md:col-12 lg:col-12">
                                     <div class="flex flex-column ml-4 mr-4">
                                         <label htmlFor="productName">Product Name</label>
-                                        <input pInputText id="productName" formControlName="productName"
+                                        <input  pInputText id="productName" formControlName="productName"
                                             placeholder="Product name" />
                                         <div
                                             *ngIf="myForm.get('productName')?.invalid && (myForm.get('productName')?.dirty || myForm.get('productName')?.touched)">
                                             Please provide a product name.
                                         </div>
+                                        <!-- [(ngModel)]="productName" -->
                                     </div>
                                 </div>
                                 <div class="col-6 md:col-12 lg:col-12">
                                     <div class="flex flex-column mr-4">
                                         <label htmlFor="price">Price</label>
-                                        <!-- <input pInputText id="price" formControlName="price" placeholder="Price" /> -->
-                                        <p-inputNumber pInput id="price" formControlName="price"
+                                        <!-- <input [(ngModel)]="price" pInputText id="price" formControlName="price"  />  -->
+                                        <p-inputNumber  pInputText pInput id="price" formControlName="price"
                                             placeholder="Price"></p-inputNumber>
                                         <div
                                             *ngIf="myForm.get('price')?.invalid && (myForm.get('price')?.dirty || myForm.get('price')?.touched)">
@@ -48,7 +46,6 @@
                                 <div class="col-6 md:col-12 lg:col-12">
                                     <div class="flex flex-column ml-4 mr-4">
                                         <label htmlFor="categoryId">Category</label>
-
                                         <!-- <p-dropdown [options]="category"  optionLabel="name"></p-dropdown> -->
                                         <p-dropdown formControlName="category" [options]="category" optionLabel="name" placeholder="Select a Category" ></p-dropdown>
                                         <!-- <p-dropdown [options]="cities" [(ngModel)]="" optionLabel="name" placeholder="Select a City"></p-dropdown> -->
@@ -67,12 +64,12 @@
                                             <input formControlName="file" type="file" #fileInput class="form-control-file mt-3 ml-2"
                                                 (change)="onFileSelected(fileInput)" />
                                             <div class="flex justify-content-center ">
-                                                <button (click)="onUpload()" class="btn btn-light hover:btn btn-outline-dark w-40px mt-2 mb-2 ">
+                                                <button (click)="onUpload()" type="button" class="btn btn-light hover:btn btn-outline-dark w-40px mt-2 mb-2">
                                                     Upload</button>
                                             </div>
                                             <div
                                             *ngIf="myForm.get('file')?.invalid && (myForm.get('file')?.dirty || myForm.get('file')?.touched)">
-                                            Please select a category.
+                                            Please select a File.
                                         </div> 
                                         </div>
                                     </div>
@@ -85,7 +82,7 @@
                                         styleClass="p-button-outlined">
                                     </p-button>
                                     <p-button label="Save" class="bg-b-color" styleClass="p-button" type="submit" 
-                                         [disabled]="myForm.invalid" (click)="onSubmit()">
+                                         [disabled]="myForm.invalid" >
                                         <!-- (click)="onSubmit()" routerLink="/products"-->
                                     </p-button>
                                 </div>

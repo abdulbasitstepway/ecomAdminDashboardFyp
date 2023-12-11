@@ -18,10 +18,12 @@ export class AddProductComponent implements OnInit {
   uploadedFiles: any[] = [];
   productName: string = '';
   productPrice: number = 0;
-  categoryId: string = '';
+  categoryName: string = '';
   imageURLs: string[] = [];
-  image:any;
+  image:any=[];
   selectedFile: File | undefined;
+  vendor:any=1;
+  categoryId:number = 0 ;
 
   constructor(private productService: ProductService,private categoryService: CategoryService,
     private fb: FormBuilder,private http:HttpClient) { }
@@ -40,7 +42,7 @@ export class AddProductComponent implements OnInit {
 
     this.categoryService.getAllCategory().subscribe((response :any) => {
       this.category = response
-      console.log(response);
+      // console.log(response);
       
     })
   }
@@ -63,16 +65,44 @@ export class AddProductComponent implements OnInit {
         this.imageURLs.push(response)
         // this.image.push(response)
         // console.log(response);
-        // console.log(this.imageURLs);
-        
-      }
-      )
-    
+        // console.log(this.imageURLs);  
+      })
   }
 
-  onSubmit(){
-   debugger
-    if(this.myForm.valid){
+  onSubmit(form: FormGroup) {
+    console.log('Valid?', form.valid);
+    // console.log(form.value);
+    // console.log('name', form.value.productName);
+    // console.log('price', form.value.price);
+    // console.log('categoryId', form.value.category.id);
+    // console.log('image', this.imageURLs);
+    let obj = { 
+      name: form.value.productName ,
+      price: form.value.price,
+      categoryId : form.value.category.id,
+      vendorId :this.vendor,
+      image:this.imageURLs
+      
+              }
+
+              this.productService.postProduct(obj).subscribe(
+                      (respose)=> {
+                        console.log('Product uploaded successfully!',respose);
+                      }
+                    )
+              // console.log("Objectttttt");
+              
+              // console.log(obj.name);
+              // console.log(obj.price);
+              // console.log(obj.categoryId);
+              // console.log(obj.vendorId);
+              // console.log(obj.image);
+              
+  }
+
+}
+  // onSubmit(){
+  //   if(this.myForm.valid){
       // console.log(this.myForm.value);
       // console.log(this.myForm.value.productName +" ProductName");
       // console.log(this.myForm.value.price +" Price");
@@ -84,30 +114,30 @@ export class AddProductComponent implements OnInit {
     //  formData.append('name', this.myForm.value.productName);
     //  formData.append('price', this.myForm.value.price);
     //  formData.append('category', this.myForm.value.category.id);
-    const obj = {
-      name : this.myForm.value.productName,
-      price : this.myForm.value.price,
-      category : this.myForm.value.category.id,
-      image : this.imageURLs
-    }
-    console.log("object",+ obj );
-    console.log(this.imageURLs);
+    // const obj = {
+    //   name : this.myForm.value.productName,
+    //   price : this.myForm.value.price,
+    //   category : this.myForm.value.category.id,
+    //   image : this.imageURLs
+    // }
+    // console.log("object",+ obj );
+    // console.log(this.imageURLs);
     
     //  formData.append('file',this.image );
       // console.log(this.myForm.value.image  + "Hello");
       
     //  console.log(this.myForm + "      FormDATA");
      
-    this.productService.postProduct(obj).subscribe(
-      (respose)=> {
-        console.log('Product uploaded successfully!',respose);
-      }
-    )
-     }
+//     this.productService.postProduct(obj).subscribe(
+//       (respose)=> {
+//         console.log('Product uploaded successfully!',respose);
+//       }
+//     )
+//      }
     
     
-    }
-}
+//     }
+// }
   
 
   // onSubmit(): void {
