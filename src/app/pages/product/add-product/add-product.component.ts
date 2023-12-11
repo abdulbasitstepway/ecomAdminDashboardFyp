@@ -82,22 +82,19 @@ export class AddProductComponent implements OnInit {
       categoryId : form.value.category.id,
       vendorId :this.vendor,
       image:this.imageURLs
-      
               }
-
               this.productService.postProduct(obj).subscribe(
                       (respose)=> {
                         console.log('Product uploaded successfully!',respose);
                       }
                     )
+                    
               // console.log("Objectttttt");
-              
               // console.log(obj.name);
               // console.log(obj.price);
               // console.log(obj.categoryId);
               // console.log(obj.vendorId);
               // console.log(obj.image);
-              
   }
 
 }
